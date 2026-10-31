@@ -1,0 +1,16 @@
+{
+  "id": "crest-fx",
+  "name": "Crest FX",
+  "abbrev": "CRFX",
+  "version": "0.1.0",
+  "api_version": 2,
+  "description": "Crest's effects as an audio FX: distortion, chorus, tempo-synced delay and reverb in 7 routings",
+  "author": "AI & Klaine",
+  "dsp": "crest-fx.so",
+  "component_type": "audio_fx",
+  "capabilities": {
+    "chainable": true,
+    "audio_out": true,
+    "requires_continuous_processing": true
+  }
+}

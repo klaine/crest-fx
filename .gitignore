@@ -1,0 +1,12 @@
+# Build outputs (scripts/build.sh). The module package is attached to a release, not committed.
+build/
+modules/
+crest-fx-module.tar.gz
+*.so
+*.so.o
+
+# Regenerable and local files
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
