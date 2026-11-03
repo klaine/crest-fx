@@ -96,8 +96,9 @@ echo "== check crest-fx.so"
 cp src/module.json src/cards.js LICENSE "$MODULE/"
 
 echo "== package"
-# COPYFILE_DISABLE keeps macOS tar from adding ._ AppleDouble files
-COPYFILE_DISABLE=1 tar -czf "$ROOT/crest-fx-module.tar.gz" --exclude '.DS_Store' \
+# COPYFILE_DISABLE keeps macOS tar from adding ._ AppleDouble files; --numeric-owner leaves the
+# builder's user and group names out of the headers, --no-xattrs the com.apple.* attributes
+COPYFILE_DISABLE=1 tar -czf "$ROOT/crest-fx-module.tar.gz" --numeric-owner --no-xattrs --exclude '.DS_Store' \
   -C "$ROOT/modules/audio_fx" crest-fx
 
 ls -l "$MODULE/crest-fx.so" "$ROOT/crest-fx-module.tar.gz"
