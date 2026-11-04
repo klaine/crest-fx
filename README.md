@@ -28,15 +28,28 @@ has been at level 0 for 2 s is switched off to save CPU, which cuts anything lef
 
 **Status:** runs on a Move behind a Line In module; the native tests cover the rest.
 
-## Install
+## Installing on Move
+
+Crest FX needs a Move with [Schwung](https://github.com/charlesvestal/schwung) installed.
+
+1. Download `crest-fx-module.tar.gz` from the
+   [latest release](https://github.com/klaine/crest-fx/releases/latest).
+2. Install it with Schwung Manager (`http://move.local:7700`), or by hand: extract the archive so that
+   it lands at `/data/UserData/schwung/modules/audio_fx/crest-fx/` on the Move.
+3. Rescan modules in Schwung Manager, or restart Schwung.
+
+Crest FX then appears in the audio FX list as **CRFX**.
+
+## Building
 
 ```sh
-scripts/build.sh           # needs zig and python3; writes crest-fx-module.tar.gz
-scripts/deploy.sh [host]   # default move.local
+scripts/build.sh           # needs zig and python3; tests, then writes crest-fx-module.tar.gz
+scripts/deploy.sh [host]   # staged install of that build over SSH, default move.local
 ```
 
-Then rescan modules in Schwung Manager (`http://move.local:7700`) or restart Schwung. Crest FX appears
-in the audio FX list. It installs to `/data/UserData/schwung/modules/audio_fx/crest-fx/`.
+`scripts/deploy.sh` needs an SSH key on the Move (add one at `http://move.local/development/ssh`). It
+stages the package on the Move's data partition and renames it into place, so a running Schwung is not
+disturbed. `scripts/logs.sh` follows Schwung's debug log.
 
 ## Licence
 

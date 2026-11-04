@@ -35,4 +35,12 @@ anything is stale**.
   Native tests run under UBSan.
 - **Realtime:** no I/O, allocation or logging. Instances come from a static pool of 12 (1.1 MB each,
   resident only once used). `scripts/check_so.py` whitelists the library's undefined symbols.
-- Nothing has run on a Move yet: don't claim device behaviour is verified.
+- It runs on a Move behind Line In; anything beyond that the user hasn't reported is unverified.
+
+## Releasing
+
+`src/module.json` holds the only version. A release bumps it and `release.json` (which Schwung Manager
+reads from `main` to find the version and download URL) in one commit, tags it `vX.Y.Z`, and attaches
+`crest-fx-module.tar.gz` from `scripts/build.sh` to the GitHub release. The module is listed in
+Schwung's `module-catalog.json` as `audio_fx` / `multi-fx`; the catalog entry needs no change for a new
+version. Only release when the user asks.
